@@ -2,4 +2,4 @@
 
 
 
-![Screenshot](./Screenshot.png)![]()
+<img src="./Screenshot.png" alt="Screenshot" style="zoom: 33%;" />![]()
