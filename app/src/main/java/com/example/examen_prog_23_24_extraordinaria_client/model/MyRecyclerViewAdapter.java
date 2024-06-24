@@ -20,7 +20,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private List<Linea> values;
     private LayoutInflater inflater;
     private Context context;
-    private View.OnClickListener listener;
 
     public MyRecyclerViewAdapter(@NonNull Context context) {
         this.context = context;
@@ -28,21 +27,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         values = new ArrayList<>();
     }
 
-    public void insertValue(Linea linea){
-        values.add(0,linea);
-        notifyDataSetChanged();
-        //notifyItemInserted(0);
-    }
-    public void remove(int pos) {
-        values.remove(pos);
+    public void insertValue(Linea linea) {
+        values.add(0, linea);
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.simple_element,parent,false);
-        view.setOnClickListener(listener);
+        View view = inflater.inflate(R.layout.simple_element, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -51,23 +44,17 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
         Linea linea = values.get(position);
 
-        holder.tvIncremento.setText(""+linea.variacion);
+        holder.tvIncremento.setText("" + linea.variacion);
         holder.tvNombre.setText(linea.nombre);
-        holder.tvSaldo.setText(""+linea.saldo);
+        holder.tvSaldo.setText("" + linea.saldo);
 
-        holder.updateBackground(context.getResources().getColor((position%2==0)?R.color.recycler_even:R.color.recycler_odd, context.getTheme()));
+        holder.updateBackground(context.getResources().getColor((position % 2 == 0) ? R.color.recycler_even : R.color.recycler_odd, context.getTheme()));
     }
 
     @Override
     public int getItemCount() {
         return values.size();
     }
-
-    public void setListener(View.OnClickListener listener) {
-        this.listener=listener;
-    }
-
-
 
     public static class Linea {
 
@@ -81,21 +68,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             this.saldo = saldo;
         }
 
-        public String getNombre() {
-            return nombre;
-        }
-
-        public float getVariacion() {
-            return variacion;
-        }
-
-        public float getSaldo() {
-            return saldo;
-        }
     }
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvIncremento;
         TextView tvNombre;
@@ -107,7 +83,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             tvIncremento = itemView.findViewById(R.id.tvIncremento);
             tvSaldo = itemView.findViewById(R.id.tvSaldo);
         }
-        public void updateBackground(int color){
+
+        public void updateBackground(int color) {
             itemView.setBackgroundColor(color);
         }
     }

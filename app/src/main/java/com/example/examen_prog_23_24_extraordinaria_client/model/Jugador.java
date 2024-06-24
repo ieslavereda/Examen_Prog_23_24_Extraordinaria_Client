@@ -17,13 +17,13 @@ public class Jugador {
         return saldo;
     }
 
-    public void recogePremio(float cantidad){
-        this.saldo+=cantidad;
+    public void recogePremio(float cantidad) {
+        this.saldo += cantidad;
     }
 
-    public boolean gastarMoneda(){
-        if(saldo>1){
-            saldo-=1;
+    public boolean gastarMoneda() {
+        if (saldo >= 1) {
+            saldo -= 1;
             return true;
         }
         return false;

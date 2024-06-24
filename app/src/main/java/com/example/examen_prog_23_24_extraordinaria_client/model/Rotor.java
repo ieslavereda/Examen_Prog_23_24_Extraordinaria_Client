@@ -59,6 +59,7 @@ public class Rotor extends ConstraintLayout {
             tragaperras.gastarAvance();
             actualizar();
         });
+
         girarAleatoriamente();
         setEnableButtons(false);
     }

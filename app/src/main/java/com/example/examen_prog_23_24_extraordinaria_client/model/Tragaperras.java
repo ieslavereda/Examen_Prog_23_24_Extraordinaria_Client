@@ -74,17 +74,24 @@ public class Tragaperras extends ConstraintLayout implements MaquinaAzar {
 
         btnJugar.setOnClickListener(v -> {
             if (creditos > 0) {
+
                 premioRetirado = false;
                 avances = 2;
-                habilitarAvances(true);
                 creditos--;
-                for (Rotor rotor : valores)
-                    rotor.girarAleatoriamente();
+
+                habilitarAvances(true);
+                girarRotores();
+
                 tvCreditos.setText(String.valueOf(creditos));
             } else
                 Toast.makeText(getContext(), "Tienes que introducir una moneda", Toast.LENGTH_LONG).show();
         });
 
+    }
+
+    private void girarRotores() {
+        for (Rotor rotor : valores)
+            rotor.girarAleatoriamente();
     }
 
     public void recogerPremioListener(View.OnClickListener listener) {
@@ -165,6 +172,5 @@ public class Tragaperras extends ConstraintLayout implements MaquinaAzar {
         for (Rotor r : valores)
             r.setEnableButtons(enable);
     }
-
 
 }
